@@ -1,0 +1,33 @@
+li{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-danger">Menú</h2>
+
+<h3>Pizzas</h3>
+<ul class="list-group mb-3">
+    {% for p in pizzas %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ p.name }} <span>${{ p.price }}</span>
+    </li>
+    {% endfor %}
+</ul>
+
+<h3>Complementos</h3>
+<ul class="list-group mb-3">
+    {% for c in complementos %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ c.name }} <span>${{ c.price }}</span>
+    </li>
+    {% endfor %}
+</ul>
+
+<h3>Bebidas</h3>
+<ul class="list-group mb-3">
+    {% for b in bebidas %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ b.name }} <span>${{ b.price }}</span>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

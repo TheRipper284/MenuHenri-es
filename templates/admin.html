@@ -1,0 +1,35 @@
+{% extends "base.html"%}
+{% block content %}
+
+<h2 class="text-denger">Panel Admin</h2>
+
+<form action="/add_item" method="POST" class="card p-3 mb-4">
+    <h4>Agregar nueva pizza</h4>
+    <input class="form-control mb-2" name="name" placeholder="Nombre" required>
+    <input class="form-control mb-2" name="price" placeholder="Precio" required>
+    <select class="form-control mb-2" name="category">
+        <option>Pizzas</option>
+        <option>Complementos</option>
+        <option>Bebidas</option>
+    </select>
+    <button class="btn btn-success">Guardar</button>
+</form>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Nombre</th><th>Precio</th><th>Categoría</th><th>Acciones</th>
+    </tr>
+    {% for m in menu_items %}
+    <tr>
+        <td>{{ m.name }}</td>
+        <td>{{ m.price }}</td>
+        <td>{{ m.category}}</td>
+        <td>
+            <a  class="btn btn-warning btn-sm" href="/edit/{{ m._id }}">Editar</a>
+            <a  class="btn btn-danger btn-sm" href="/delete/{{ m._id }}">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
