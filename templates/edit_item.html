@@ -3,21 +3,34 @@
 
 <h2 class="text-danger">Editar Platillo</h2>
 
-<form action="/update/{{ item._id }}" method="POST">
+<form action="/update/{{ item._id }}" method="POST" enctype="multipart/form-data">
+
     <label>Nombre</label>
-    <input class="fomr-control mb-2" name="name" value="{{ item.name }}" required>
+    <input class="form-control mb-2" name="name" value="{{ item.name }}" required>
 
     <label>Precio</label>
-    <input class="form-control mb2" name="price" value="{{ item.price }}" required>
+    <input class="form-control mb-2" name="price" value="{{ item.price }}" required>
 
     <label>Categoría</label>
-    <select class="form-control mb-2" name="category">
+    <select name="category" class="form-control mb-2">
         <option {% if item.category == "Pizzas" %}selected{% endif %}>Pizzas</option>
         <option {% if item.category == "Complementos" %}selected{% endif %}>Complementos</option>
         <option {% if item.category == "Bebidas" %}selected{% endif %}>Bebidas</option>
     </select>
 
+    <label>Descripción</label>
+    <textarea name="description" class="form-control mb-2">{{ item.description }}</textarea>
+
+    {% if item.image %}
+    <p>Imagen actual:</p>
+    <img src="/static/uploads/{{ item.image }}" width="120">
+    {% endif %}
+
+    <label>Nueva imagen (opcional)</label>
+    <input type="file" name="image" class="form-control mb-3">
+
     <button class="btn btn-primary">Actualizar</button>
+
 </form>
 
 {% endblock %}

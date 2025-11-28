@@ -1,33 +1,57 @@
-li{% extends "base.html" %}
+{% extends "base.html" %}
 {% block content %}
 
-<h2 class="text-danger">Menú</h2>
+<h2 class="text-danger mb-4">Menú Henrie´s Pizza</h2>
+
+<style>
+.card-flip {
+    perspective: 1000px;
+    width: 260px;
+    margin: 10px;
+}
+.card-inner {
+    width: 100%;
+    height: 350px;
+    transition: transform .7s;
+    transform-style: preserve-3d;
+}
+.card-flip:hover .card-inner {
+    transform: rotateY(180deg);
+}
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+.card-back {
+    transform: rotateY(180deg);
+    padding: 20px;
+}
+</style>
 
 <h3>Pizzas</h3>
-<ul class="list-group mb-3">
+<div class="d-flex flex-wrap">
     {% for p in pizzas %}
-    <li class="list-group-item d-flex justify-content-between">
-        {{ p.name }} <span>${{ p.price }}</span>
-    </li>
+    <div class="card-flip">
+        <div class="card-inner border">
+            <div class="card-front">
+                {% if p.image %}
+                <img src="/static/uploads/{{ p.image }}" class="img-fluid">
+                {% endif %}
+                <div class="p-2">
+                    <h5>{{ p.name }}</h5>
+                    <p class="text-danger">${{ p.price }}</p>
+                </div>
+            </div>
+            <div class="card-back bg-light">
+                <h5>{{ p.name }}</h5>
+                <p>{{ p.description }}</p>
+                <p><strong>${{ p.price }}</strong></p>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-</ul>
-
-<h3>Complementos</h3>
-<ul class="list-group mb-3">
-    {% for c in complementos %}
-    <li class="list-group-item d-flex justify-content-between">
-        {{ c.name }} <span>${{ c.price }}</span>
-    </li>
-    {% endfor %}
-</ul>
-
-<h3>Bebidas</h3>
-<ul class="list-group mb-3">
-    {% for b in bebidas %}
-    <li class="list-group-item d-flex justify-content-between">
-        {{ b.name }} <span>${{ b.price }}</span>
-    </li>
-    {% endfor %}
-</ul>
+</div>
 
 {% endblock %}

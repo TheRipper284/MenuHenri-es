@@ -5,3 +5,5 @@ load_dotenv()
 
 MONGO_URI = os.getenv('MONGO_URI')
 DB_NAME = os.getenv('DB_NAME')
+
+UPLOAD_FOLDER = os.path.join(os.path.join("static", "uploads"))
