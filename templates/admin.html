@@ -4,24 +4,25 @@
 <h2 class="text-danger">Panel Admin</h2>
 
 <form action="/add_item" method="POST" enctype="multipart/form-data" class="card p-3 mb-4">
-    <h4>Agregar platillo</h4>
+    <h4>Agregar nuevo platillo</h4>
 
-    <input name="name" class="form-control mb-2" placeholder="Nombre" required>
-    <input name="price" class="form-control mb-2" placeholder="Precio" required>
+    <input class="form-control mb-2" name="name" placeholder="Nombre" required>
+    <input class="form-control mb-2" name="price" placeholder="Precio" type="number" required>
 
-    <select name="category" class="form-control mb-2">
-        <option>Pizzas</option>
-        <option>Complementos</option>
-        <option>Bebidas</option>
+    <select class="form-control mb-2" name="category">
+        <option value="Pizzas">Pizzas</option>
+        <option value="Complementos">Complementos</option>
+        <option value="Bebidas">Bebidas</option>
     </select>
 
-    <textarea name="description" class="form-control mb-2" placeholder="Descripción"></textarea>
+    <textarea class="form-control mb-2" name="description" placeholder="Descripción"></textarea>
 
-    <label>Imagen</label>
-    <input type="file" name="image" class="form-control mb-3">
+    <label>Imagen:</label>
+    <input type="file" name="image" class="form-control mb-2">
 
-    <button class="btn btn-success">Guardar</button>
+    <button class="btn btn-success mt-2">Guardar</button>
 </form>
+
 
 <table class="table table-bordered">
     <tr>

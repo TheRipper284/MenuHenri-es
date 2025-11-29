@@ -1,40 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2 class="text-danger mb-4">Menú Henrie´s Pizza</h2>
+<h2 class="text-danger mb-4"> Henrie´s <br> Pizza</h2>
 
-<style>
-.card-flip {
-    perspective: 1000px;
-    width: 260px;
-    margin: 10px;
-}
-.card-inner {
-    width: 100%;
-    height: 350px;
-    transition: transform .7s;
-    transform-style: preserve-3d;
-}
-.card-flip:hover .card-inner {
-    transform: rotateY(180deg);
-}
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-}
-.card-back {
-    transform: rotateY(180deg);
-    padding: 20px;
-}
-</style>
-
-<h3>Pizzas</h3>
-<div class="d-flex flex-wrap">
+<!-- ============================
+            PIZZAS
+============================= -->
+<h3 class="mt-4 text-danger">Pizzas</h3>
+<div class="grid-4">
     {% for p in pizzas %}
     <div class="card-flip">
-        <div class="card-inner border">
+        <div class="card-inner border rounded">
             <div class="card-front">
                 {% if p.image %}
                 <img src="/static/uploads/{{ p.image }}" class="img-fluid">
@@ -44,10 +20,65 @@
                     <p class="text-danger">${{ p.price }}</p>
                 </div>
             </div>
-            <div class="card-back bg-light">
+            <div class="card-back bg-light rounded">
                 <h5>{{ p.name }}</h5>
                 <p>{{ p.description }}</p>
-                <p><strong>${{ p.price }}</strong></p>
+                <strong class="text-danger">${{ p.price }}</strong>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- ============================
+        COMPLEMENTOS
+============================= -->
+<h3 class="mt-4 text-danger">Complementos</h3>
+<div class="d-flex flex-wrap">
+    {% for c in complementos %}
+    <div class="card-flip">
+        <div class="card-inner border rounded">
+            <div class="card-front">
+                {% if c.image %}
+                <img src="/static/uploads/{{ c.image }}" class="img-fluid">
+                {% endif %}
+                <div class="p-2">
+                    <h5>{{ c.name }}</h5>
+                    <p class="text-danger">${{ c.price }}</p>
+                </div>
+            </div>
+            <div class="card-back bg-light rounded">
+                <h5>{{ c.name }}</h5>
+                <p>{{ c.description }}</p>
+                <strong class="text-danger">${{ c.price }}</strong>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- ============================
+            BEBIDAS
+============================= -->
+<h3 class="mt-4 text-danger">Bebidas</h3>
+<div class="d-flex flex-wrap">
+    {% for b in bebidas %}
+    <div class="card-flip">
+        <div class="card-inner border rounded">
+            <div class="card-front">
+                {% if b.image %}
+                <img src="/static/uploads/{{ b.image }}" class="img-fluid">
+                {% endif %}
+                <div class="p-2">
+                    <h5>{{ b.name }}</h5>
+                    <p class="text-danger">${{ b.price }}</p>
+                </div>
+            </div>
+            <div class="card-back bg-light rounded">
+                <h5>{{ b.name }}</h5>
+                <p>{{ b.description }}</p>
+                <strong class="text-danger">${{ b.price }}</strong>
             </div>
         </div>
     </div>
